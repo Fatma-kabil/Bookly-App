@@ -1,5 +1,8 @@
+import 'package:bookly_app/conatants.dart';
 import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -18,30 +21,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
 
-    animationController = AnimationController(
-      vsync: this,
-      duration:
-          const Duration(seconds: 2), // Shorter duration for smoother animation
-    );
-
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, -20), end: const Offset(0, 0))
-            .animate(
-      animationController,
-
-      // Smooth easing for animation
-    );
-
-    slidingAnimationtwo =
-        Tween<Offset>(begin: const Offset(0, 20), end: const Offset(0, 0))
-            .animate(
-      animationController,
-
-      // Smooth easing for animation
-    );
-
-    // Start the animation
-    animationController.forward();
+    initSlidingAnimation();
+    navigateToHome();
 
     // This listener is unnecessary; `SlideTransition` already rebuilds on animation updates.
     // slidingAnimation.addListener(() {
@@ -77,6 +58,48 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ],
         ),
       ),
+    );
+  }
+
+  void initSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration:
+          const Duration(seconds: 2), // Shorter duration for smoother animation
+    );
+
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(0, -20), end: const Offset(0, 0))
+            .animate(
+      animationController,
+
+      // Smooth easing for animation
+    );
+
+    slidingAnimationtwo =
+        Tween<Offset>(begin: const Offset(0, 20), end: const Offset(0, 0))
+            .animate(
+      animationController,
+
+      // Smooth easing for animation
+    );
+
+    // Start the animation
+    animationController.forward();
+
+    // This listener is unnecessary; `SlideTransition` already rebuilds on animation updates.
+    // slidingAnimation.addListener(() {
+    // setState(() {});
+    // });
+  }
+
+  void navigateToHome() {
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        Get.to(() => const HomeView(),
+            transition: Transition.fadeIn, duration: kTransitionAnimation);
+      },
     );
   }
 }
