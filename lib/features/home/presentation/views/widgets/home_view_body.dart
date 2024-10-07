@@ -1,3 +1,4 @@
+import 'package:bookly_app/conatants.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
@@ -10,21 +11,22 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 24, top: 24, bottom: 24),
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, top: 24, bottom: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAppBar(),
-          FeaturedBooksListView(),
-          SizedBox(
+          const CustomAppBar(),
+          const FeaturedBooksListView(),
+          const SizedBox(
             height: 50,
           ),
-          Text('Best Seller', style: Styles.titleMeduim),
-          SizedBox(
-            height: 18,
+          Text('Best Seller',
+              style: Styles.textStyle21.copyWith(fontFamily: kGtSectraFine)),
+          const SizedBox(
+            height: 15,
           ),
-          BestSellerListViewItem()
+          const BestSellerListViewItem()
         ],
       ),
     );
@@ -52,7 +54,7 @@ class BestSellerListViewItem extends StatelessWidget {
                         AssetsData.testImage,
                       ))),
             ),
-          )
+          ),
         ],
       ),
     );
