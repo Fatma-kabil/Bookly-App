@@ -55,6 +55,22 @@ class BestSellerListViewItem extends StatelessWidget {
                       ))),
             ),
           ),
+          const SizedBox(
+            width: 30,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: const Text(
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  'Harry Potter and the Goblet of Fire',
+                  style: Styles.textStyle22,
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
