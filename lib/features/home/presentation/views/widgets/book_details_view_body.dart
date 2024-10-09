@@ -28,7 +28,7 @@ class BookDetailsViewBody extends StatelessWidget {
             style: Styles.textStyle30,
           ),
           const SizedBox(
-            height: 6,
+            height: 2,
           ),
           Opacity(
             opacity: 0.7,
@@ -40,6 +40,12 @@ class BookDetailsViewBody extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          const BookRating(
+            mainAxisAlignment: MainAxisAlignment.center,
+          )
         ],
       ),
     );
