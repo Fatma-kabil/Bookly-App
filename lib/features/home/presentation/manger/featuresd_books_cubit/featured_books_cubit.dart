@@ -7,5 +7,20 @@ import 'package:equatable/equatable.dart';
 part 'featured_books_state.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
-  FeaturedBooksCubit() : super(FeaturedBooksInitial());
+  FeaturedBooksCubit(this.homerepo) : super(FeaturedBooksInitial());
+
+  final HomeRepo homerepo;
+  Future<void> fetchFeaturedBooks() async {
+    emit(FeaturedBooksLoading());
+    var result = await homerepo.fetctFeaturedBooks();
+
+    result.fold(
+      (failure) {
+        emit(FeaturedBooksFailure(errMessage: failure.errorMessage));
+      },
+      (books) {
+        emit(FeaturedBooksSucccess(books: books));
+      },
+    );
+  }
 }
