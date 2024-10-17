@@ -6,8 +6,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key, required this.book});
+class NewestListViewItem extends StatelessWidget {
+  const NewestListViewItem({super.key, required this.book});
   final BookModel book;
 
   @override
@@ -20,7 +20,8 @@ class BestSellerListViewItem extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            CustomBookImage(imageUrl: book.volumeInfo.imageLinks!.thumbnail),
+            CustomBookImage(
+                imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? ''),
             const SizedBox(
               width: 30,
             ),
@@ -59,7 +60,7 @@ class BestSellerListViewItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       BookRating(
-                        rating: book.volumeInfo.averageRating ?? 0,
+                        rating: book.volumeInfo.averageRating?.round() ?? 0,
                         count: book.volumeInfo.ratingsCount ?? 0,
                       ),
                     ],
