@@ -1,6 +1,6 @@
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
-import 'package:bookly_app/features/home/presentation/manger/best_seller_books_cubit/best_seller_books_cubit.dart';
+import 'package:bookly_app/features/home/presentation/manger/Newest_books_cubit/Newest_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,9 +10,9 @@ class NewestListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BestSellerBooksCubit, BestSellerBooksState>(
+    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
       builder: (context, state) {
-        if (state is BestSellerBooksSuccess) {
+        if (state is NewestBooksSuccess) {
           return ListView.builder(
             // shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -25,7 +25,7 @@ class NewestListView extends StatelessWidget {
               );
             },
           );
-        } else if (state is BestSellerBooksFailure) {
+        } else if (state is NewestBooksFailure) {
           return CustomErrorWidget(errMessage: state.errMessage);
         } else {
           return const CustomLoadingIndicator();
