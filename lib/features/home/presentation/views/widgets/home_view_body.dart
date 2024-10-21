@@ -1,5 +1,3 @@
-import 'package:bookly_app/conatants.dart';
-
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view.dart';
 
@@ -14,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScrollView(
-      physics: const BouncingScrollPhysics(),
+      physics: BouncingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
             child: Column(
