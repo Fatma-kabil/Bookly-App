@@ -20,8 +20,13 @@ class SearchRepoImpl implements SearchRepo {
 
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
-      }
+        BookModel book = BookModel.fromJson(item);
+
+          // Filter books where the title starts with the search keyword
+          if (book.volumeInfo.title!.toLowerCase().contains(searchKeyWord.toLowerCase())) {
+            books.add(book);
+          }
+        }
       return right(books);
     } on Exception catch (e) {
       if (e is DioException) {
@@ -30,4 +35,5 @@ class SearchRepoImpl implements SearchRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+ 
 }

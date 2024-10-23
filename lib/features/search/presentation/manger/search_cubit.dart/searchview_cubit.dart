@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:bookly_app/core/models/book_model/book_model.dart';
 
@@ -24,3 +25,4 @@ class SearchviewCubit extends Cubit<SearchviewState> {
     );
   }
 }
+
