@@ -8,19 +8,11 @@ import 'package:bookly_app/features/search/presentation/views/widgets/search_rea
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchViewBody extends StatefulWidget {
+class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
   @override
-  State<SearchViewBody> createState() => _SearchViewBodyState();
-}
-
-class _SearchViewBodyState extends State<SearchViewBody> {
-  @override
-  void initState() {
-    BlocProvider.of<NewestBooksCubit>(context).fetchBestSellerBooks();
-    super.initState();
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +30,10 @@ class _SearchViewBodyState extends State<SearchViewBody> {
           const SizedBox(
             height: 16,
           ),
-          const Expanded(child: NewestListView())
+          const Expanded(child: SearchResultListView())
         ],
       ),
     );
   }
 }
+ 
