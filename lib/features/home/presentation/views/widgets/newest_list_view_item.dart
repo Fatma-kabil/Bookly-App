@@ -44,8 +44,10 @@ class NewestListViewItem extends StatelessWidget {
                   Opacity(
                     opacity: .7,
                     child: Text(
-                      book.volumeInfo.authors![0],
+                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle16,
+                      book.volumeInfo.authors![0],
                     ),
                   ),
                   const SizedBox(
