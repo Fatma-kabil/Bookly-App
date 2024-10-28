@@ -10,7 +10,7 @@ class NewestListviewShimmer  extends StatelessWidget {
   
   return Shimmer.fromColors(
     baseColor: kshimmercolor!,
-    highlightColor: Colors.grey[100]!,
+    highlightColor: Colors.grey[400]!,
     child: ListView.builder(
       itemCount: 5,  // Mock item count for loading state
       itemBuilder: (context, index) {
@@ -24,7 +24,7 @@ class NewestListviewShimmer  extends StatelessWidget {
                    aspectRatio: 2.6 / 4,
                   child: Container(
                    
-                    color: Colors.grey[300], // Mock for book image
+                    color: kshimmercolor, // Mock for book image
                   ),
                 ),
                 const SizedBox(

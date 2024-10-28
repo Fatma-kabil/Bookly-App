@@ -45,6 +45,16 @@ dependencies:
   url_launcher: ^6.3.1
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.14.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/images.png"
+  adaptive_icon_foreground: "assets/images/images.png"
+  adaptive_icon_background: "#5F8F3C"
+  min_sdk_android: 21 
+  remove_alpha_ios: true
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter

@@ -19,7 +19,7 @@ class FeaturedListviewShimmer extends StatelessWidget {
             padding: const EdgeInsets.only(right: 15),
             child: Shimmer.fromColors(
               baseColor: kshimmercolor!,
-              highlightColor: Colors.grey[100]!,
+              highlightColor: Colors.grey[400]!,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: AspectRatio(
