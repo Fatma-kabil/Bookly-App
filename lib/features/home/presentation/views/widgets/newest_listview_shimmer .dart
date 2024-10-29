@@ -20,13 +20,19 @@ class NewestListviewShimmer  extends StatelessWidget {
             height: 125,
             child: Row(
               children: [
-                AspectRatio(
-                   aspectRatio: 2.6 / 4,
-                  child: Container(
-                   
-                    color: kshimmercolor, // Mock for book image
-                  ),
-                ),
+                
+                   ClipRRect(
+                     borderRadius: BorderRadius.circular(16),
+                     child: AspectRatio(
+                       aspectRatio: 2.6 / 4,
+                      child: Container(
+                      
+                       
+                        color: kshimmercolor, // Mock for book image
+                      ),
+                                       ),
+                   ),
+                
                 const SizedBox(
                   width: 30,
                 ),
@@ -35,6 +41,7 @@ class NewestListviewShimmer  extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
+                        
                         width: MediaQuery.of(context).size.width * 0.5,
                         height: 20,
                         color: kshimmercolor, // Mock for title

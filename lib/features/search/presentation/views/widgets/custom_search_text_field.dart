@@ -9,7 +9,7 @@ class CustumSearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-     onSubmitted: (value) async {
+     onChanged: (value) async {
         await BlocProvider.of<SearchviewCubit>(context)
             .searhBooks(searchKeyWord: value);
       

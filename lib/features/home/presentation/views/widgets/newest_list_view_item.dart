@@ -34,7 +34,7 @@ class NewestListViewItem extends StatelessWidget {
                     child: Text(
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      book.volumeInfo.title!,
+                      book.volumeInfo.title??"",
                       style: Styles.textStyle22,
                     ),
                   ),
@@ -47,18 +47,16 @@ class NewestListViewItem extends StatelessWidget {
                        maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle16,
-                      book.volumeInfo.authors![0],
+                      book.volumeInfo.authors?[0]??"",
+                  ),
                     ),
-                  ),
                   const SizedBox(
-                    height: 3,
-                  ),
+                    height: 3,),
                   Row(
-                    children: [
-                      Text(
-                        'Free',
-                        style: Styles.textStyle18
-                            .copyWith(fontWeight: FontWeight.bold),
+                    children:[
+                       Text(
+                         'Free',
+                        style: Styles.textStyle18.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
                       BookRating(
