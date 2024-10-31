@@ -43,6 +43,16 @@ dependencies:
   google_fonts: ^6.2.1
   shimmer: ^3.0.0
   url_launcher: ^6.3.1
+  flutter_native_splash: ^2.2.18
+
+flutter_native_splash:
+  color: "#100B20"             # Background color of the splash screen
+  android: true               # Enable for Android
+  ios: true                   # Enable for iOS
+  android_gravity: center     # Center the image on Android
+  ios_content_mode: scaleAspectFill # Adjust the iOS image display mode
+  fullscreen: true           # Enable full-screen mode for splash
+
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.1"
