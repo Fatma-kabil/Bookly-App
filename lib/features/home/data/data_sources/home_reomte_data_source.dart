@@ -33,9 +33,12 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
   }
 
   @override
-  Future<List<BookEntity>> fetctSimilerBooks({required String category}) {
-    // TODO: implement fetctSimilerBooks
-    throw UnimplementedError();
+  Future<List<BookEntity>> fetctSimilerBooks({required String category})async {
+    var data = await apiService.get(
+        endPoint: 'volumes?q==subject:$category&Filtering=free-ebooks&Sorting=relevance');
+
+    List<BookEntity> books = getBooksList(data);
+    return books;
   }
   List<BookEntity> getBooksList(Map<String, dynamic> data) {
      List<BookEntity> books = [];
