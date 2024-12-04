@@ -22,6 +22,21 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
     return books;
   }
 
+  
+  @override
+  Future<List<BookEntity>> fetctNewestBooks()async {
+    var data = await apiService.get(
+        endPoint: 'volumes?q==computer science&Filtering=free-ebooks&Sorting=newest');
+
+    List<BookEntity> books = getBooksList(data);
+    return books;
+  }
+
+  @override
+  Future<List<BookEntity>> fetctSimilerBooks({required String category}) {
+    // TODO: implement fetctSimilerBooks
+    throw UnimplementedError();
+  }
   List<BookEntity> getBooksList(Map<String, dynamic> data) {
      List<BookEntity> books = [];
     for (var item in data['items']) {
@@ -30,15 +45,4 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
     return books;
   }
 
-  @override
-  Future<List<BookEntity>> fetctNewestBooks() {
-    // TODO: implement fetctNewestBooks
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<BookEntity>> fetctSimilerBooks({required String category}) {
-    // TODO: implement fetctSimilerBooks
-    throw UnimplementedError();
-  }
 }
