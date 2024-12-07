@@ -16,11 +16,12 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetctFeaturedBooks() async {
     try {
-      var booksList = homeLocalDataSource.fetctFeaturedBooks();
-      if (booksList.isNotEmpty) {
-        return right(booksList);
+      List<BookEntity> books;
+      books = homeLocalDataSource.fetctFeaturedBooks();
+      if (books.isNotEmpty) {
+        return right(books);
       }
-      var books = await homeReomteDataSource.fetctFeaturedBooks();
+      books = await homeReomteDataSource.fetctFeaturedBooks();
       return right(books);
     } catch (e) {
       return left(ServerFailure(e.toString()));
@@ -28,15 +29,33 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetctNewestBooks() {
-    // TODO: implement fetctNewestBooks
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookEntity>>> fetctNewestBooks() async {
+    try {
+     List<BookEntity> books;
+      books = homeLocalDataSource.fetctNewestBooks();
+      if (books.isNotEmpty) {
+        return right(books);
+      }
+      books = await homeReomteDataSource.fetctNewestBooks();
+      return right(books);
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
   }
 
   @override
   Future<Either<Failure, List<BookEntity>>> fetctSimilerBooks(
-      {required String category}) {
-    // TODO: implement fetctSimilerBooks
-    throw UnimplementedError();
+      {required String category}) async {
+    try {
+     List<BookEntity> books;
+      books = homeLocalDataSource.fetctSimilerBooks(category: category);
+      if (books.isNotEmpty) {
+        return right(books);
+      }
+      books = await homeReomteDataSource.fetctSimilerBooks(category: category);
+      return right(books);
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
   }
 }
