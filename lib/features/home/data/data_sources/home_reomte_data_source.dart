@@ -36,6 +36,7 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
             'volumes?q==computer science&Filtering=free-ebooks&Sorting=newest');
 
     List<BookEntity> books = getBooksList(data);
+     saveData(books,kNewestBox);
     return books;
   }
 
@@ -46,6 +47,7 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
             'volumes?q==subject:$category&Filtering=free-ebooks&Sorting=relevance');
 
     List<BookEntity> books = getBooksList(data);
+     saveData(books,kSimilarBox);
     return books;
   }
 

@@ -18,13 +18,15 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
 
   @override
   List<BookEntity> fetctNewestBooks() {
-    // TODO: implement fetctNewestBooks
-    throw UnimplementedError();
+   var box = Hive.box<BookEntity>(kNewestBox);
+
+    return box.values.toList();
   }
 
   @override
   List<BookEntity> fetctSimilerBooks({required String category}) {
-    // TODO: implement fetctSimilerBooks
-    throw UnimplementedError();
+ var box = Hive.box<BookEntity>(kSimilarBox);
+
+    return box.values.toList();
   }
 }

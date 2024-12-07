@@ -18,12 +18,17 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   setupServiceLocator();
-  runApp(const BooklyApp());
+ 
 
-  
+
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
+  await Hive.openBox<BookEntity>(kSimilarBox);
+
+
+   runApp(const BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
