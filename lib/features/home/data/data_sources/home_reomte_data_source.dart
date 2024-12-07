@@ -1,6 +1,9 @@
+import 'package:bookly_app/conatants.dart';
 import 'package:bookly_app/core/models/book_model/book_model.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
+import 'package:bookly_app/core/utils/functions/save_books.dart';
 import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
+import 'package:hive/hive.dart';
 
 abstract class HomeReomteDataSource {
   Future<List<BookEntity>> fetctNewestBooks();
@@ -19,33 +22,38 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
         endPoint: 'volumes?q=Programming&Filtering=free-ebooks');
 
     List<BookEntity> books = getBooksList(data);
+
+
+    saveData(books,kFeaturedBox);
     return books;
   }
 
   
   @override
-  Future<List<BookEntity>> fetctNewestBooks()async {
+  Future<List<BookEntity>> fetctNewestBooks() async {
     var data = await apiService.get(
-        endPoint: 'volumes?q==computer science&Filtering=free-ebooks&Sorting=newest');
+        endPoint:
+            'volumes?q==computer science&Filtering=free-ebooks&Sorting=newest');
 
     List<BookEntity> books = getBooksList(data);
     return books;
   }
 
   @override
-  Future<List<BookEntity>> fetctSimilerBooks({required String category})async {
+  Future<List<BookEntity>> fetctSimilerBooks({required String category}) async {
     var data = await apiService.get(
-        endPoint: 'volumes?q==subject:$category&Filtering=free-ebooks&Sorting=relevance');
+        endPoint:
+            'volumes?q==subject:$category&Filtering=free-ebooks&Sorting=relevance');
 
     List<BookEntity> books = getBooksList(data);
     return books;
   }
+
   List<BookEntity> getBooksList(Map<String, dynamic> data) {
-     List<BookEntity> books = [];
+    List<BookEntity> books = [];
     for (var item in data['items']) {
       books.add(BookModel.fromJson(item));
     }
     return books;
   }
-
 }
