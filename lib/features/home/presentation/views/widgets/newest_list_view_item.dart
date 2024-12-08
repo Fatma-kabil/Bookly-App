@@ -1,6 +1,6 @@
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/core/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 
 class NewestListViewItem extends StatelessWidget {
   const NewestListViewItem({super.key, required this.book});
-  final BookModel book;
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
