@@ -25,7 +25,7 @@ class ServerFailure extends Failure {
 
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioExcep.response!.statusCode, dioExcep.response!.data);
+            dioExcep.response!.statusCode!, dioExcep.response!.data);
 
       case DioExceptionType.cancel:
         return ServerFailure('Request to ApiServer was cancelled');
@@ -45,7 +45,7 @@ class ServerFailure extends Failure {
     }
   }
 
-  factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
+  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(
           '${response['error']['message'] ?? 'Unknown error'}');
