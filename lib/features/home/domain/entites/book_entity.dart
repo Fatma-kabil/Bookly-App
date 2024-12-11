@@ -14,9 +14,13 @@ class BookEntity {
   final num? price;
   @HiveField(5)
   final num? rating;
+   @HiveField(6)
+  final num? count;
+  @HiveField(7)
+  final String? plink;
 
-  BookEntity(
-      {required this.image,
+  BookEntity({required this.count, required this.plink, 
+      required this.image,
       required this.title,
       required this.authorName,
       required this.price,

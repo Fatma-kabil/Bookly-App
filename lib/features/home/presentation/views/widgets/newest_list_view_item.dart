@@ -21,7 +21,7 @@ class NewestListViewItem extends StatelessWidget {
         child: Row(
           children: [
             CustomBookImage(
-                imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? ''),
+                imageUrl: book.image ?? ''),
             const SizedBox(
               width: 30,
             ),
@@ -34,7 +34,7 @@ class NewestListViewItem extends StatelessWidget {
                     child: Text(
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      book.volumeInfo.title??"",
+                      book.title,
                       style: Styles.textStyle22,
                     ),
                   ),
@@ -47,7 +47,7 @@ class NewestListViewItem extends StatelessWidget {
                        maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle16,
-                      book.volumeInfo.authors?[0]??"",
+                      book.authorName??"",
                   ),
                     ),
                   const SizedBox(
@@ -60,8 +60,8 @@ class NewestListViewItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       BookRating(
-                        rating: book.volumeInfo.averageRating?.round() ?? 0,
-                        count: book.volumeInfo.ratingsCount ?? 0,
+                        rating: book.rating?.round() ?? 0,
+                        count: book.count ?? 0,
                       ),
                     ],
                   )
