@@ -17,9 +17,9 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
   HomeReomteDataSourceImpl({required this.apiService});
 
   @override
-  Future<List<BookEntity>> fetctFeaturedBooks() async {
+  Future<List<BookEntity>> fetctFeaturedBooks({int pageNamber=0}) async {
     var data = await apiService.get(
-        endPoint: 'volumes?q=Programming&Filtering=free-ebooks');
+        endPoint: 'volumes?q=Programming&Filtering=free-ebooks&startIndex=${pageNamber*10}');
 
     List<BookEntity> books = getBooksList(data);
 
