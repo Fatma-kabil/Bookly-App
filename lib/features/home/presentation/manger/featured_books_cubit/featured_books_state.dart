@@ -10,6 +10,7 @@ sealed class FeaturedBooksState extends Equatable {
 final class FeaturedBooksInitial extends FeaturedBooksState {}
 
 final class FeaturedBooksLoading extends FeaturedBooksState {}
+final class FeaturedBooksPaginationLoading extends FeaturedBooksState {}
 
 final class FeaturedBooksSucccess extends FeaturedBooksState {
   final List<BookEntity> books;
