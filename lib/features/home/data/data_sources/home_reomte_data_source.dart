@@ -7,7 +7,7 @@ import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
 
 abstract class HomeReomteDataSource {
   Future<List<BookEntity>> fetctNewestBooks();
-  Future<List<BookEntity>> fetctFeaturedBooks();
+  Future<List<BookEntity>> fetctFeaturedBooks({int pageNamber=0});
   Future<List<BookEntity>> fetctSimilerBooks({required String category});
 }
 

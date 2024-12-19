@@ -18,11 +18,11 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetctFeaturedBooks({int pageNamber=0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetctFeaturedBooks();
+      books = homeLocalDataSource.fetctFeaturedBooks(pageNamber: pageNamber);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeReomteDataSource.fetctFeaturedBooks();
+      books = await homeReomteDataSource.fetctFeaturedBooks(pageNamber: pageNamber);
       return right(books);
     } catch (e) {
       if (e is DioException) {
