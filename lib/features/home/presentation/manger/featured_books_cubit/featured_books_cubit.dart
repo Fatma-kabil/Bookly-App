@@ -21,7 +21,12 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
 
     result.fold(
       (failure) {
-        emit(FeaturedBooksFailure(errMessage: failure.errorMessage));
+        if(pageNamber==0){
+          emit(FeaturedBooksFailure(errMessage: failure.errorMessage));
+        }
+        else{
+          emit(FeaturedBooksPaginationFailure(errMessage: failure.errorMessage));
+        }
       },
       (books) {
         emit(FeaturedBooksSucccess(books: books));

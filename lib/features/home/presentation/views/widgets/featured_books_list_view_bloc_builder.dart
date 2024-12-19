@@ -24,16 +24,19 @@ class _FeaturedBooksListViewBlocBuilderState
     return BlocConsumer<FeaturedBooksCubit, FeaturedBooksState>(
       listener: (context, state) {
         if (state is FeaturedBooksSucccess) {
-          books.addAll(books);
+          books.addAll(state.books);
+        }
+        if (state is FeaturedBooksPaginationFailure) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.errMessage)));
         }
       },
-      builder: (context, state) {
-        return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
+     
           builder: (context, state) {
             if (state is FeaturedBooksSucccess ||
+                state is FeaturedBooksPaginationFailure ||
                 state is FeaturedBooksPaginationLoading) {
-              return FeaturedBooksListview(
-                  books: books);
+              return FeaturedBooksListview(books: books);
             } else if (state is FeaturedBooksFailure) {
               return CustomErrorWidget(errMessage: state.errMessage);
             } else {
@@ -41,7 +44,7 @@ class _FeaturedBooksListViewBlocBuilderState
             }
           },
         );
-      },
-    );
+      }
+    
   }
-}
+
