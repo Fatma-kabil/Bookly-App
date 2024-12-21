@@ -16,8 +16,8 @@ class HomeViewBody extends StatefulWidget {
 
 class _HomeViewBodyState extends State<HomeViewBody> {
   late final ScrollController _scrollController;
-  var nextPage = 1;
-  var isLoading = false;
+  int nextPage = 1;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -26,19 +26,17 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 
     // Add a listener to trigger the fetch when 70% of the scroll is reached
     _scrollController.addListener(() async {
-      final position = _scrollController.position;
-      if (position.pixels >= position.maxScrollExtent * 0.7 &&
-          !position.outOfRange) {
-        if (!isLoading) {
-          setState(() {
-            isLoading = true;
-          });
-          await BlocProvider.of<NewestBooksCubit>(context)
-              .fetchNewestBooks(pageNamber: nextPage++);
-          setState(() {
-            isLoading = false;
-          });
-        }
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent * 0.7 &&
+          !isLoading) {
+        setState(() {
+          isLoading = true;
+        });
+        await BlocProvider.of<NewestBooksCubit>(context)
+            .fetchNewestBooks(pageNamber: nextPage++);
+        setState(() {
+          isLoading = false;
+        });
       }
     });
   }
@@ -52,35 +50,30 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-     // controller: _scrollController,
+      controller: _scrollController,
       slivers: [
         SliverToBoxAdapter(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 30),
                 child: CustomAppBar(),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 30),
                 child: FeaturedBooksListViewBlocBuilder(),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Text('Newest Books', style: Styles.textStyle21),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
             ],
           ),
         ),
-          SliverFillRemaining(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            child: NewestListViewBlocBuilder(),
-          ),
-        ),
+        NewestListViewBlocBuilder(),
       ],
     );
   }

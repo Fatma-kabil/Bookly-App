@@ -26,7 +26,7 @@ class BookModel extends BookEntity {
     this.searchInfo,
   }) : super(
     volumeInfo.categories![0],
-    plink:volumeInfo.previewLink ,
+    plink:volumeInfo.previewLink  ,
     count:volumeInfo.pageCount ,
             bookId: id!,
             image: volumeInfo.imageLinks?.thumbnail ?? "",

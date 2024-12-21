@@ -35,9 +35,9 @@ class _NewestListViewBlocBuilderState extends State<NewestListViewBlocBuilder> {
           );
         } else if (state is NewestBooksFailure) {
           return 
-          CustomErrorWidget(errMessage: state.errMessage);
+          SliverToBoxAdapter(child: CustomErrorWidget(errMessage: state.errMessage));
         } else {
-          return const NewestListviewShimmer();
+          return SliverToBoxAdapter(child: const NewestListviewShimmer());
         }
       },
     );
