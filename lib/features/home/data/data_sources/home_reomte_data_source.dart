@@ -6,7 +6,7 @@ import 'package:bookly_app/features/home/domain/entites/book_entity.dart';
 
 
 abstract class HomeReomteDataSource {
-  Future<List<BookEntity>> fetctNewestBooks();
+  Future<List<BookEntity>> fetctNewestBooks({int pageNamber=0});
   Future<List<BookEntity>> fetctFeaturedBooks({int pageNamber=0});
   Future<List<BookEntity>> fetctSimilerBooks({required String category});
 }
@@ -30,10 +30,10 @@ class HomeReomteDataSourceImpl extends HomeReomteDataSource {
 
   
   @override
-  Future<List<BookEntity>> fetctNewestBooks() async {
+  Future<List<BookEntity>> fetctNewestBooks({int pageNamber=0}) async {
     var data = await apiService.get(
         endPoint:
-            'volumes?q==computer science&Filtering=free-ebooks&Sorting=newest');
+            'volumes?q==computer science&Filtering=free-ebooks&Sorting=newest&startIndex=${pageNamber*10}');
 
     List<BookEntity> books = getBooksList(data);
      saveData(books,kNewestBox);

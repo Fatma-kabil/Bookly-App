@@ -2,7 +2,7 @@ import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
 
-import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view_bloc_builder.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view_item.dart';
 
 import 'package:bookly_app/features/search/presentation/manger/search_cubit.dart/searchview_cubit.dart';
@@ -43,7 +43,7 @@ class SearchResultListView extends StatelessWidget {
         } else if (state is SreachViewLoading) {
           return const CustomLoadingIndicator();
         } else {
-          return const NewestListView();
+          return const NewestListViewBlocBuilder();
         }
       },
     );
