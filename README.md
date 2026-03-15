@@ -101,7 +101,7 @@ git clone https://github.com/Fatma-kabil/Bookly-App
 2️⃣ Navigate to the project directory:
 
 ```bash
-cd flutter-programming-books-app
+cd Bookly-App
 ```
 
 3️⃣ Install dependencies:
